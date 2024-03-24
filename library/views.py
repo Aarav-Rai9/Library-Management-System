@@ -17,7 +17,7 @@ def add_book(request):
         form = BookForm(request.POST)
         if form.is_valid():
             form.save()
-    return render(request, "category/addBook.html", {"category": categories})
+    return render(request, "book/addBook.html", {"category": categories})
 
 
 def list_category(request):
