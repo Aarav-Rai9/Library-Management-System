@@ -13,6 +13,10 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     rating = models.FloatField()
     cost = models.FloatField()
+    description = models.TextField(default='')
+
+
+
 #
 #
 # class Student(models.Model):

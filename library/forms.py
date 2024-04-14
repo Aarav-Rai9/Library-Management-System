@@ -11,7 +11,7 @@ class CategoryForm(forms.ModelForm):
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['category', 'bookname', 'status', 'author', 'rating', 'cost']
+        fields = ['category', 'bookname', 'status', 'author', 'rating', 'cost', 'description']
 #
 #
 # class StudentForm(forms.ModelForm):

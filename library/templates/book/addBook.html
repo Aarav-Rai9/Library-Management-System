@@ -30,14 +30,14 @@
     <label for="description" class="form-label">Description</label>
     <input type="text" class="form-control" id="description" placeholder="Tell us about the book" name="description">
   </div>
-  <div class="col-md-6">
-    <label for="category" class="form-label">Category</label>
-    <select id="category" name="category_id" class="form-select">
-        {% for i in category %}
-        <option value="{{ i.id }}">{{ i.name }}</option>
-        {% endfor %}
-    </select>
-  </div>
+<!--  <div class="col-md-6">-->
+<!--    <label for="category" class="form-label">Category</label>-->
+<!--    <select id="category" name="category" class="form-select">-->
+<!--        {% for i in category %}-->
+<!--        <option value="{{ i.id }}">{{ i.name }}</option>-->
+<!--        {% endfor %}-->
+<!--    </select>-->
+<!--  </div>-->
   <div class="col-md-4">
     <label for="status" class="form-label">Status</label>
     <select id="status" class="form-select" name="status">

@@ -54,11 +54,15 @@
                             <tr>
                                 <th>{{ book.id }}</th>
                                 <th>{{ book.bookname }}</th>
-                                <th>{{ book.status }}</th>
+
+                                {% if book.status == "1" %}
+                                <th>Available</th>
+                                {% else %}
+                                <th>Unavailable</th>
+                                {% endif %}
                                 <th>{{ book.author }}</th>
                                 <th>{{ book.rating }}</th>
                                 <th>{{ book.cost }}</th>
-                                <th>{{ book.category }}</th>
                             </tr>
 
                             {% endfor %}
