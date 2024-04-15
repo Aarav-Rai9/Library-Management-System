@@ -47,6 +47,7 @@
                                 <th scope="col">Rating</th>
                                 <th scope="col">Cost</th>
                                 <th scope="col">Category</th>
+                                <th scope="col">Description</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,11 +59,13 @@
                                 {% if book.status == "1" %}
                                 <th>Available</th>
                                 {% else %}
-                                <th>Unavailable</th>
+                                <th>Checked Out</th>
                                 {% endif %}
                                 <th>{{ book.author }}</th>
                                 <th>{{ book.rating }}</th>
                                 <th>{{ book.cost }}</th>
+                                <th>{{ book.category.name }}</th>
+                                <th>{{ book.description }}</th>
                             </tr>
 
                             {% endfor %}
