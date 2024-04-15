@@ -15,7 +15,6 @@ def add_category(request):
 def add_book(request):
     category = Category.objects.all()
     if request.method == "POST":
-        print(1)
         category_id = request.POST.get("category")
         category_object = get_category(category_id)
         form = BookForm(request.POST)
@@ -23,7 +22,6 @@ def add_book(request):
         print(request.POST)
         if form.is_valid():
             try:
-                print(2)
                 form.save()
                 return redirect("listBook")
             except Exception as e:
@@ -39,10 +37,18 @@ def get_category(id):
 
 def list_category(request):
     category = Category.objects.all()
+    if request.method == "POST":
+        categoryname = request.POST.get("search-category")
+        if categoryname != "":
+            category = Category.objects.filter(name__icontains=categoryname)
     return render(request, "category/listCategory.html", {"categories": category})
 
 
 def list_books(request):
     books = Book.objects.all()
     categories = Category.objects.all()
+    if request.method == "POST":
+        bookname = request.POST.get("search-book")
+        if bookname != "":
+            books = Book.objects.filter(bookname__icontains=bookname)
     return render(request, "book/listBook.html", {"books": books, "categories": categories})
