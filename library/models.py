@@ -16,15 +16,13 @@ class Book(models.Model):
     description = models.TextField(default='')
 
 
+class Student(models.Model):
+    name = models.CharField(max_length=255)
+    grade = models.CharField(max_length=255)
 
-#
-#
-# class Student(models.Model):
-#     name = models.CharField(max_length=255)
-#     grade = models.CharField(max_length=255)
-#     library_card = models.ForeignKey('LibraryCard', on_delete=models.CASCADE)
-#
-#
-# class LibraryCard(models.Model):
-#     student = models.OneToOneField(Student, on_delete=models.CASCADE)
-#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+class LibraryCard(models.Model):
+    student = models.OneToOneField(Student, on_delete=models.CASCADE)
+    book = models.ManyToManyField(Book)
+    issue_date = models.DateTimeField()
+

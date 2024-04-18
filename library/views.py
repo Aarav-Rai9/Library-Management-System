@@ -1,5 +1,7 @@
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import timezone
+
 from .forms import *
 
 
@@ -29,6 +31,19 @@ def add_book(request):
         else:
             print(form.errors)
     return render(request, "book/addBook.html", {"category": category})
+
+
+def add_student(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            student = form.save()
+            print(f"id: {student.id}, name: {student.name}, grade: {student.grade}")
+            library_card = LibraryCard.objects.create(student=student, issue_date=timezone.now())
+            return render(request, "libraryCard/listLibraryCard.html", {"library_card": library_card})
+        else:
+            print(form.errors)
+    return render(request, "student/addStudent.html")
 
 
 def get_category(id):
