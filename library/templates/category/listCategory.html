@@ -23,7 +23,13 @@
                         <a class="nav-link" href="{% url 'addBook' %}">Add Book</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addStudent' %}">Add Student</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'listBook' %}">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listStudent' %}">Students</a>
                     </li>
                 </ul>
             </div>
@@ -55,13 +61,15 @@
                         <tbody>
                             {% for category in categories %}
                             <tr>
-                                <th>{{ category.id }}</th>
-                                <th>{{ category.name }}</th>
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.name }}</td>
                                 {% if category.status == "1" %}
                                 <td>Available</td>
                                 {% else %}
                                 <td>Checked Out</td>
                                 {% endif %}
+                                <td><a type="button" href="{% url 'editCategory' category.id %}" >Edit</a></td>
+                                <td><a type="button" href="{% url 'deleteCategory' category.id %}" >Delete</a></td>
                             </tr>
 
                             {% endfor %}

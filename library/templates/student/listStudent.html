@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management System - Books</title>
+    <title>Library Management System - Students</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -23,15 +23,8 @@
                         <a class="nav-link" href="{% url 'addBook' %}">Add Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'addStudent' %}">Add Student</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'listCategory' %}">Categories</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'listStudent' %}">Students</a>
-                    </li>
-
                 </ul>
             </div>
         </div>
@@ -42,45 +35,31 @@
         <div class="row">
             <div class="col-md-10 offset-md-1">
                 <div class="card">
-                    <div class="card-header text-center fs-2">Books</div>
-                         <div>
-                        <form method="post" action="{% url 'listBook' %}">
-                            {% csrf_token %}
-                            <input type="search" id="search" name="search-book" required>
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
+                    <div class="card-header text-center fs-2">Students</div>
 
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Book Name</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Author</th>
-                                <th scope="col">Rating</th>
-                                <th scope="col">Cost</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Grade</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for book in books %}
+                            {% for student in students %}
                             <tr>
-                                <td>{{ book.id }}</td>
-                                <td>{{ book.bookname }}</td>
+                                <th>{{ student.id }}</th>
+                                <th>{{ student.name }}</th>
 
-                                {% if book.status == "1" %}
-                                <td>Available</td>
+                                {% if student.grade == 'a' %}
+                                <th>A</th>
+                                {% elif student.grade == 'b' %}
+                                <th>B</th>
+                                {% elif student.grade == 'c' %}
+                                <th>C</th>
                                 {% else %}
-                                <td>Checked Out</td>
+                                <th>D</th>
                                 {% endif %}
-                                <td>{{ book.author }}</td>
-                                <td>{{ book.rating }}</td>
-                                <td>{{ book.cost }}</td>
-                                <td>{{ book.category.name }}</td>
-                                <td>{{ book.description }}</td>
-                                <td><a type="button" href="{% url 'editBook' book.id %}" >Edit</a></td>
                             </tr>
 
                             {% endfor %}

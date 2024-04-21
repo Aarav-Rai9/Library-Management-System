@@ -67,3 +67,38 @@ def list_books(request):
         if bookname != "":
             books = Book.objects.filter(bookname__icontains=bookname)
     return render(request, "book/listBook.html", {"books": books, "categories": categories})
+
+
+def list_students(request):
+    student = Student.objects.all()
+    return render(request, "student/listStudent.html", {"students": student})
+
+
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    categories = Category.objects.all()
+    form = BookForm(instance=book)
+    if request.method == "POST":
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect("listBook")
+    return render(request, "book/editBook.html", {"form": form, "book": book, "categories": categories})
+
+
+def edit_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    form = CategoryForm(instance=category)
+    print(form.instance)
+    if request.method == "POST":
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect("listCategory")
+    return render(request, "Category/editCategory.html", {"form": form, "category": category})
+
+
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    category.delete(category_id)
+    return redirect("listCategory")

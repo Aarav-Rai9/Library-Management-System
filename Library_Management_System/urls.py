@@ -24,5 +24,9 @@ urlpatterns = [
     path('addBook/', views.add_book, name='addBook'),
     path('listCategory/', views.list_category, name='listCategory'),
     path('listBook/', views.list_books, name='listBook'),
-    path('addStudent/', views.add_student, name='addStudent')
+    path('addStudent/', views.add_student, name='addStudent'),
+    path('listStudent/', views.list_students, name='listStudent'),
+    path('editBook/<int:book_id>/', views.edit_book, name='editBook'),
+    path('editCategory/<int:category_id>/', views.edit_category, name='editCategory'),
+    path('deleteCategory/<int:category_id>/', views.delete_category, name='deleteCategory')
 ]
