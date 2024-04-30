@@ -49,16 +49,16 @@
                             {% for student in students %}
                             <tr>
                                 <th>{{ student.id }}</th>
-                                <th>{{ student.name }}</th>
+                                <td>{{ student.name }}</td>
 
                                 {% if student.grade == 'a' %}
-                                <th>A</th>
+                                <td>A</td>
                                 {% elif student.grade == 'b' %}
-                                <th>B</th>
+                                <td>B</td>
                                 {% elif student.grade == 'c' %}
-                                <th>C</th>
+                                <td>C</td>
                                 {% else %}
-                                <th>D</th>
+                                <td>D</td>
                                 {% endif %}
                             </tr>
 

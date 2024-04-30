@@ -98,7 +98,30 @@ def edit_category(request, category_id):
     return render(request, "Category/editCategory.html", {"form": form, "category": category})
 
 
+def edit_student(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    form = StudentForm(instance=student)
+    if request.method == "POST":
+        form = StudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect("listStudent")
+
+
 def delete_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     category.delete(category_id)
     return redirect("listCategory")
+
+
+def assign_book(request):
+    book = Book.objects.all()
+    students = Student.objects.all()
+    if request.method == "POST":
+        student_id = request.POST['student']
+        library_card = get_object_or_404(LibraryCard, student_id=student_id)
+        print(request.POST)
+        book_id = request.POST['book']
+        book = get_object_or_404(Book, id=book_id)
+
+    return render(request, "book/assignBookToStudent.html", {"book": book, "students": students})

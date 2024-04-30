@@ -18,7 +18,7 @@ class Book(models.Model):
     bookname = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    rating = models.FloatField()
+    rating = models.FloatField(default=0.0)
     cost = models.FloatField()
     description = models.TextField(default='')
 

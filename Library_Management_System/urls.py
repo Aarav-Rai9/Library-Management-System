@@ -28,5 +28,7 @@ urlpatterns = [
     path('listStudent/', views.list_students, name='listStudent'),
     path('editBook/<int:book_id>/', views.edit_book, name='editBook'),
     path('editCategory/<int:category_id>/', views.edit_category, name='editCategory'),
-    path('deleteCategory/<int:category_id>/', views.delete_category, name='deleteCategory')
+    path('deleteCategory/<int:category_id>/', views.delete_category, name='deleteCategory'),
+    path('editStudent/<int:student_id>/', views.edit_student, name='editStudent'),
+    path('assignBook/', views.assign_book, name='assignBook')
 ]
