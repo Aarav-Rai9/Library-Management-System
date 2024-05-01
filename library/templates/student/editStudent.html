@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Library Management System - Edit Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card">
+                    <div class="card-header text-center fs-2">Edit Student</div>
 
+                    <form class="row g-3" action="{% url 'editStudent' student.id %}" method="post">
+                        {% csrf_token %}
+  <div class="col-md-6">
+    <label for="student_name" class="form-label">Student Name</label>
+    <input type="text" class="form-control" id="student_name" name="name" value="{{ form.instance.name }}">
+  </div>
+  <div class="col-md-6">
+    <label for="grade" class="form-label">Average Grade</label>
+    <select id="grade" name="grade" class="form-select">
+        <option value="a" {% if form.grade.value == "a" %} selected {% endif %}>A</option>
+        <option value="b" {% if form.grade.value == "b" %} selected {% endif %}>B</option>
+        <option value="c" {% if form.grade.value == "c" %} selected {% endif %}>C</option>
+        <option value="d" {% if form.grade.value == "d" %} selected {% endif %}>D</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

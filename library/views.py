@@ -106,6 +106,7 @@ def edit_student(request, student_id):
         if form.is_valid():
             form.save()
             return redirect("listStudent")
+    return render(request, "Student/editStudent.html", {"form": form, "student": student})
 
 
 def delete_category(request, category_id):

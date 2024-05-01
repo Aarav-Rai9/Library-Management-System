@@ -60,6 +60,7 @@
                                 {% else %}
                                 <td>D</td>
                                 {% endif %}
+                                <td><a type="button" href="{% url 'editStudent' student.id %}" >Edit</a></td>
                             </tr>
 
                             {% endfor %}
