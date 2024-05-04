@@ -119,10 +119,17 @@ def assign_book(request):
     book = Book.objects.all()
     students = Student.objects.all()
     if request.method == "POST":
-        student_id = request.POST['student']
-        library_card = get_object_or_404(LibraryCard, student_id=student_id)
-        print(request.POST)
-        book_id = request.POST['book']
-        book = get_object_or_404(Book, id=book_id)
+        book_id = request.POST.get('book')
+        student_id = request.POST.get('student')
+        # Retrievethebookobject
+        book_object = Book.objects.get(pk=book_id)
+        # Retrievethestudentobjectbasedonthestudent_id
+        student = get_object_or_404(Student, id=student_id)
+        # Retrievethelibrarycardassociatedwiththestudent
+        library_card = get_object_or_404(LibraryCard, student=student)
+        book_list = library_card.book.all()
+        # book_list.append(book_object)
+        print(book_list)
+        return
 
     return render(request, "book/assignBookToStudent.html", {"book": book, "students": students})
