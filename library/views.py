@@ -121,11 +121,8 @@ def assign_book(request):
     if request.method == "POST":
         book_id = request.POST.get('book')
         student_id = request.POST.get('student')
-        # Retrievethebookobject
         book_object = Book.objects.get(pk=book_id)
-        # Retrievethestudentobjectbasedonthestudent_id
         student = get_object_or_404(Student, id=student_id)
-        # Retrievethelibrarycardassociatedwiththestudent
         library_card = get_object_or_404(LibraryCard, student=student)
         book_list = library_card.book.all()
         # book_list.append(book_object)
@@ -133,3 +130,9 @@ def assign_book(request):
         return
 
     return render(request, "book/assignBookToStudent.html", {"book": book, "students": students})
+
+
+def view_student(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    library_card = get_object_or_404(LibraryCard, student=student)
+    return render(request, "student/viewStudent.html", {"student": student, "library_card": library_card})

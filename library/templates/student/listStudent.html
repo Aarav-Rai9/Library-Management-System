@@ -61,6 +61,7 @@
                                 <td>D</td>
                                 {% endif %}
                                 <td><a type="button" href="{% url 'editStudent' student.id %}" >Edit</a></td>
+                                <td><a type="button" href="{% url 'viewStudent' student.id %}" >View</a></td>
                             </tr>
 
                             {% endfor %}
