@@ -16,7 +16,7 @@ class Category(models.Model):
 class Book(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     bookname = models.CharField(max_length=255)
-    status = models.CharField(max_length=255)
+    status = models.BooleanField(default=False)
     author = models.CharField(max_length=255)
     rating = models.FloatField(default=0.0)
     cost = models.FloatField()
@@ -33,6 +33,6 @@ class Student(models.Model):
 
 class LibraryCard(models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
-    book = models.ManyToManyField(Book)
+    book = models.ManyToManyField(Book, related_name='library_card')
     issue_date = models.DateTimeField()
 

@@ -26,6 +26,19 @@
                     <p class="h5">Library Card Number: {{ library_card.id }}</p>
                     <p class="h5">Library Card Issue Date: {{ library_card.issue_date }}</p>
 
+                    <table class="table">
+                        <thread>
+                            <tr>
+                                <th scope="col">Book</th>
+                                <th scope="col">Date Issued</th>
+                            </tr>
+                        </thread>
+                        <tbody>
+                            {% for book in book_list %}
+                                <td>{{  }}</td>
+                        </tbody>
+                    </table>
+
 
  </div>
             </div>

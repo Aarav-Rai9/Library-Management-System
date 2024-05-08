@@ -1,6 +1,7 @@
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from datetime import datetime
 
 from .forms import *
 
@@ -116,23 +117,29 @@ def delete_category(request, category_id):
 
 
 def assign_book(request):
-    book = Book.objects.all()
-    students = Student.objects.all()
     if request.method == "POST":
         book_id = request.POST.get('book')
         student_id = request.POST.get('student')
-        book_object = Book.objects.get(pk=book_id)
-        student = get_object_or_404(Student, id=student_id)
-        library_card = get_object_or_404(LibraryCard, student=student)
-        book_list = library_card.book.all()
-        # book_list.append(book_object)
-        print(book_list)
-        return
+        book = Book.objects.get(id=book_id)
+        book.status = True
+        book.save()
+        student = Student.objects.get(id=student_id)
+        library_card, created = LibraryCard.objects.get_or_create(student=student)
+        library_card.book.add(book)
+        library_card.issue_date = datetime.now()
+        library_card.save()
 
-    return render(request, "book/assignBookToStudent.html", {"book": book, "students": students})
+        return redirect('listBook')
+
+    else:
+        book = Book.objects.all()
+        students = Student.objects.all()
+        return render(request, "book/assignBookToStudent.html", {"book": book, "students": students})
 
 
 def view_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     library_card = get_object_or_404(LibraryCard, student=student)
-    return render(request, "student/viewStudent.html", {"student": student, "library_card": library_card})
+    book_list = list(library_card.book.get())
+    print(book_list)
+    return render(request, "student/viewStudent.html", {"student": student, "library_card": library_card, "book_list": book_list})

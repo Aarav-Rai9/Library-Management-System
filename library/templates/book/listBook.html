@@ -71,9 +71,9 @@
                                 <td>{{ book.bookname }}</td>
 
                                 {% if book.status == "1" %}
-                                <td>Available</td>
-                                {% else %}
                                 <td>Checked Out</td>
+                                {% else %}
+                                <td>Available</td>
                                 {% endif %}
                                 <td>{{ book.author }}</td>
                                 <td>{{ book.rating }}</td>
