@@ -31,5 +31,6 @@ urlpatterns = [
     path('deleteCategory/<int:category_id>/', views.delete_category, name='deleteCategory'),
     path('editStudent/<int:student_id>/', views.edit_student, name='editStudent'),
     path('assignBook/', views.assign_book, name='assignBook'),
-    path('viewStudent/<int:student_id>/', views.view_student, name='viewStudent')
+    path('viewStudent/<int:student_id>/', views.view_student, name='viewStudent'),
+    path('deleteStudent/<int:book_id>/', views.delete_book, name='deleteBook')
 ]

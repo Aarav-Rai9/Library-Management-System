@@ -81,6 +81,7 @@
                                 <td>{{ book.category.name }}</td>
                                 <td>{{ book.description }}</td>
                                 <td><a type="button" href="{% url 'editBook' book.id %}" >Edit</a></td>
+                                <td><a type="button" href="{% url 'deleteBook' book.id %}" >Delete</a></td>
                             </tr>
 
                             {% endfor %}

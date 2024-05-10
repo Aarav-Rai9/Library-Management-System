@@ -21,6 +21,7 @@ class Book(models.Model):
     rating = models.FloatField(default=0.0)
     cost = models.FloatField()
     description = models.TextField(default='')
+    book_issue_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.bookname
