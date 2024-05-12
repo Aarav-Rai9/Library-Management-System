@@ -34,7 +34,12 @@
                             </tr>
                         </thread>
                         <tbody>
-
+                            {% for i in book_list %}
+                                <tr>
+                                    <td>{{ i.bookname }}</td>
+                                    <td>{{ i.issue_date }}</td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
 

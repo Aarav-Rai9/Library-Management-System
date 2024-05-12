@@ -141,9 +141,8 @@ def view_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     library_card = get_object_or_404(LibraryCard, student=student)
     book_list = list(library_card.book.all())
-    if book_list:
-        for i in book_list:
-
+    for i in book_list:
+        print(i.bookname)
     return render(request, "student/viewStudent.html", {"student": student, "library_card": library_card, "book_list": book_list})
 
 
