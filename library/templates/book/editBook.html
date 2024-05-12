@@ -38,13 +38,6 @@
         {% endfor %}
     </select>
   </div>
-  <div class="col-md-4">
-    <label for="status" class="form-label">Status</label>
-    <select id="status" class="form-select" name="status">
-      <option value="1" {% if form.status.value == "1" %} selected {% endif %}>Available</option>
-        <option value="0" {% if form.status.value == "0" %} selected {% endif %}>Unavailable</option>
-    </select>
-  </div>
   <div class="col-md-2">
     <label for="cost" class="form-label">Cost</label>
     <input type="number" class="form-control" id="cost" name="cost" value="{{ form.instance.cost }}">

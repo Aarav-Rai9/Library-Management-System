@@ -132,7 +132,7 @@ def assign_book(request):
         return redirect('listBook')
 
     else:
-        book = Book.objects.all()
+        book = Book.objects.filter(status__icontains=False)
         students = Student.objects.all()
         return render(request, "book/assignBookToStudent.html", {"book": book, "students": students})
 
