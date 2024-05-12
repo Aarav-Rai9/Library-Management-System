@@ -62,6 +62,7 @@
                                 <th scope="col">Cost</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,8 +81,8 @@
                                 <td>{{ book.cost }}</td>
                                 <td>{{ book.category.name }}</td>
                                 <td>{{ book.description }}</td>
-                                <td><a type="button" href="{% url 'editBook' book.id %}" >Edit</a></td>
-                                <td><a type="button" href="{% url 'deleteBook' book.id %}" >Delete</a></td>
+                                <td><a type="button" href="{% url 'editBook' book.id %}" >Edit</a>
+                                <a type="button" href="{% url 'deleteBook' book.id %}" >Delete</a></td>
                             </tr>
 
                             {% endfor %}

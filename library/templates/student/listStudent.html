@@ -49,6 +49,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Grade</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,8 +67,9 @@
                                 {% else %}
                                 <td>D</td>
                                 {% endif %}
-                                <td><a type="button" href="{% url 'editStudent' student.id %}" >Edit</a></td>
-                                <td><a type="button" href="{% url 'viewStudent' student.id %}" >View</a></td>
+                                <td><a type="button" href="{% url 'editStudent' student.id %}" >Edit</a>
+                                <a type="button" href="{% url 'viewStudent' student.id %}" >View</a>
+                                <a type="button" href="{% url 'returnBook' student.id %}" >Return book</a></td>
                             </tr>
 
                             {% endfor %}

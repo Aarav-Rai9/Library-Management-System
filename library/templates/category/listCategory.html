@@ -56,6 +56,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Category Name</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,8 +69,8 @@
                                 {% else %}
                                 <td>Checked Out</td>
                                 {% endif %}
-                                <td><a type="button" href="{% url 'editCategory' category.id %}" >Edit</a></td>
-                                <td><a type="button" href="{% url 'deleteCategory' category.id %}" >Delete</a></td>
+                                <td><a type="button" href="{% url 'editCategory' category.id %}" >Edit</a>
+                                <a type="button" href="{% url 'deleteCategory' category.id %}" >Delete</a></td>
                             </tr>
 
                             {% endfor %}

@@ -143,10 +143,21 @@ def view_student(request, student_id):
     book_list = list(library_card.book.all())
     for i in book_list:
         print(i.bookname)
-    return render(request, "student/viewStudent.html", {"student": student, "library_card": library_card, "book_list": book_list})
+    return render(request, "student/viewStudent.html",
+                  {"student": student, "library_card": library_card, "book_list": book_list})
 
 
 def delete_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     book.delete()
     return redirect("listBook")
+
+
+def return_book(request, student_id):
+    if request.method == "POST":
+        pass
+    else:
+        student = get_object_or_404(Student, id=student_id)
+        library_card = get_object_or_404(LibraryCard, student=student)
+        book_list = list(library_card.book.all())
+        return render(request, "book/returnBook.html", {"book_list": book_list, "student_id": student_id})
