@@ -25,6 +25,7 @@
                                 <tr>
                                     <td>{{ i.bookname }}</td>
                                     <td>{{ i.issue_date }}</td>
+                                    <td><a type="button" href="{% url 'return' student_id i.id %}">Return</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

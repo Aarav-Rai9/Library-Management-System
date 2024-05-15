@@ -162,7 +162,8 @@ def return_book(request, student_id):
 
 def return_book_2(request, student_id, book_id):
     book = get_object_or_404(Book, id=book_id)
-    student = get_object_or_404(Book, id=student_id)
+    student = get_object_or_404(Student, id=student_id)
     library_card = get_object_or_404(LibraryCard, student=student)
-    book_list = list(library_card.book.all())
-    book_list.remove()
+    library_card.book.remove(book)
+    library_card.save()
+    return redirect("listStudent")
