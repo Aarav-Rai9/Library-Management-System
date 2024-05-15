@@ -33,5 +33,5 @@ urlpatterns = [
     path('assignBook/', views.assign_book, name='assignBook'),
     path('viewStudent/<int:student_id>/', views.view_student, name='viewStudent'),
     path('deleteBook/<int:book_id>/', views.delete_book, name='deleteBook'),
-    path('returnBook/<int:student_id>/', views.return_book, name='returnBook')
+    path('returnBook/<int:student_id>/<int:book_id>', views.return_book, name='returnBook')
 ]

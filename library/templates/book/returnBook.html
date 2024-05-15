@@ -25,7 +25,7 @@
                                 <tr>
                                     <td>{{ i.bookname }}</td>
                                     <td>{{ i.issue_date }}</td>
-                                    <td><a type="button" href="{% url 'returnBook' student.id %}">Return</a></td>
+                                    <td><a type="button" href="{% url 'returnBook' student_id book_id %}">Return</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
