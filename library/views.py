@@ -153,12 +153,16 @@ def delete_book(request, book_id):
     return redirect("listBook")
 
 
-def return_book(request, student_id, book_id):
-    if request.method == "POST":
-        pass
-    else:
-        student = get_object_or_404(Student, id=student_id)
-        book = get_object_or_404(Book, id=book_id)
-        library_card = get_object_or_404(LibraryCard, student=student)
-        book_list = list(library_card.book.all())
-        return render(request, "book/returnBook.html", {"book_list": book_list, "student_id": student_id, "book_id": book_id})
+def return_book(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+    library_card = get_object_or_404(LibraryCard, student=student)
+    book_list = list(library_card.book.all())
+    return render(request, "book/returnBook.html", {"book_list": book_list, "student_id": student_id})
+
+
+def return_book_2(request, student_id, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    student = get_object_or_404(Book, id=student_id)
+    library_card = get_object_or_404(LibraryCard, student=student)
+    book_list = list(library_card.book.all())
+    book_list.remove()
